@@ -25,17 +25,17 @@ public class EventoService {
 		//origen
 		//image
 		// Java object to JSON string
-		String jsonString = mapper.writeValueAsString(eventoModel);
-		
-		String origenes = clienteWebGenerico.getRequestDataVariable(jsonString, "http://52.9.236.138:9287/api/emergenciasExternas/saveEventoExterno");
-		
-		JsonObject convertedObject = new Gson().fromJson(origenes, JsonObject.class);
-		
-		Gson gson=new Gson();
-		Object catOrigenLlamadaModel = gson.fromJson(convertedObject, Object.class);
-		
-		
-		System.out.println("Origenes: " + catOrigenLlamadaModel);
+//		String jsonString = mapper.writeValueAsString(eventoModel);
+//		
+//		String origenes = clienteWebGenerico.getRequestDataVariable(jsonString, "http://52.9.236.138:9287/api/emergenciasExternas/saveEventoExterno");
+//		
+//		JsonObject convertedObject = new Gson().fromJson(origenes, JsonObject.class);
+//		
+//		Gson gson=new Gson();
+//		Object catOrigenLlamadaModel = gson.fromJson(convertedObject, Object.class);
+//		
+//		
+//		System.out.println("Origenes: " + catOrigenLlamadaModel);
 
 		
 		return null;

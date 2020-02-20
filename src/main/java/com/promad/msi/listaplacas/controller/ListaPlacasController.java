@@ -51,14 +51,14 @@ public class ListaPlacasController {
    		return listaPlacaService.pruebaGet(registroModel);
    	}
 	
-//	@ApiOperation(value = "Registra un evento", produces="application/json" )
-//    @RequestMapping(value = "/evento", method = RequestMethod.POST )
-//	@ResponseStatus(HttpStatus.CREATED)
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 201, message = "Creado", response = RespuestaModel.class),
-//            @ApiResponse(code = 400, message = "Bad Request", response = ErrorDescriptor.class),
-//            @ApiResponse(code = 500, message = "Internal server error", response = ErrorDescriptor.class)
-//    })
+	@ApiOperation(value = "Registra un evento", produces="application/json" )
+    @RequestMapping(value = "/evento", method = RequestMethod.POST )
+	@ResponseStatus(HttpStatus.CREATED)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Creado", response = RespuestaModel.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = ErrorDescriptor.class),
+            @ApiResponse(code = 500, message = "Internal server error", response = ErrorDescriptor.class)
+    })
    	public Object creaEvento(@RequestBody @Valid EventoModel eventoModel) throws JsonProcessingException{
 		
    		return eventoService.creaEvento(eventoModel);

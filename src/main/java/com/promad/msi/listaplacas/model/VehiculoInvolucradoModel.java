@@ -19,7 +19,7 @@ public class VehiculoInvolucradoModel implements Serializable{
 	private static final long serialVersionUID = -7517834518371754134L;
 
 	@NotNull(message = "no puede ser nulo" )// 
-	@Pattern(regexp ="^(([A-Z0-9]{5,6})|(([A-Z0-9]{5}-([A-Z]{2}))|([A-Z0-9]{1,3}-[A-Z0-9]{2,5}))|((([A-Z0-9]{1}-[A-Z0-9]{2,5}-[A-Z0-9]{1,3})|([A-Z0-9]{2}-[A-Z0-9]{1,4}-[A-Z0-9]{1,3})|([A-Z0-9]{3}-[A-Z0-9]{2,3}-[A-Z0-9]{1,3}))))$", message = "No es un formato de placa válido" )
+	@Pattern(regexp ="^(([A-Z0-9]{5,6})|(([A-Z0-9]{5}-([A-Z0-9]{2}))|([A-Z0-9]{3}-([A-Z0-9]{1}))|([A-Z0-9]{1,3}-[A-Z0-9]{2,5}))|((([A-Z0-9]{1}-[A-Z0-9]{2,5}-[A-Z0-9]{1,3})|([A-Z0-9]{2}-[A-Z0-9]{1,4}-[A-Z0-9]{1,3})|([A-Z0-9]{3}-[A-Z0-9]{2,3}-[A-Z0-9]{1,3}))))$", message = "No es un formato de placa válido" )
 	@ApiModelProperty(position = 1, required = true,  example = "123ABC", value = "Placa del vehículo (sin caracteres extraños o espacios)", name="Placa")
 	private String placa;
 	

@@ -52,7 +52,7 @@ public class ListaPlacasController {
    	}
 	
 	@ApiOperation(value = "Registra un evento", produces="application/json" )
-    @RequestMapping(value = "/evento", method = RequestMethod.POST )
+    @RequestMapping(value = "/eventoUno", method = RequestMethod.POST )
 	@ResponseStatus(HttpStatus.CREATED)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Creado", response = RespuestaModel.class),

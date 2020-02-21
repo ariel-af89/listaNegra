@@ -15,6 +15,8 @@ public class ListaPlacaService {
 		respuestaModel.setEstatus("00");
 		respuestaModel.setMensaje("Registro en Lista " + registroModel.getVehiculoInvolucradoModel().getTipoLista() + " Satisfactorio");
 		
+		System.out.println("adgfgadfgadfgadfgadfgadfadfhadfgagglkmsdgñkj");
+		
 		return respuestaModel;
 	}
 

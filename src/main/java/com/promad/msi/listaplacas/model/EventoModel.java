@@ -53,7 +53,7 @@ public class EventoModel {
 	@ApiModelProperty(position = 12, required = false,  example = "1", value = "Tipo de lista a la cual pertenecerá el vehículo* (Catálogo)", name="Tipo de Lista")
 	private int tipoLista;
 	
-	@ApiModelProperty(position = 13, required = false, dataType = "string" )
+	@ApiModelProperty(position = 13, required = false, dataType = "string", example = "C5CDMX/PGJ/0001/20191011" )
 	private String averiguacionPrevia;
 
 	@ApiModelProperty(position = 14, required = false, dataType = "string" )

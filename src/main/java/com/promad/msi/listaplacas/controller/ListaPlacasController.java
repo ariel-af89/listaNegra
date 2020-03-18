@@ -16,6 +16,7 @@ import com.promad.msi.listaplacas.errorhandling.ErrorDescriptor;
 import com.promad.msi.listaplacas.model.EventoModel;
 import com.promad.msi.listaplacas.model.RegistroModel;
 import com.promad.msi.listaplacas.model.RespuestaModel;
+import com.promad.msi.listaplacas.model.RespuestaWService;
 import com.promad.msi.listaplacas.service.EventoService;
 import com.promad.msi.listaplacas.service.ListaPlacaService;
 
@@ -42,13 +43,13 @@ public class ListaPlacasController {
     @RequestMapping(value = "/placas", method = RequestMethod.POST )
 	@ResponseStatus(HttpStatus.CREATED)
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Creado", response = RespuestaModel.class),
+            @ApiResponse(code = 201, message = "Creado", response = RespuestaWService.class),
             @ApiResponse(code = 400, message = "Bad Request", response = ErrorDescriptor.class),
             @ApiResponse(code = 500, message = "Internal server error", response = ErrorDescriptor.class)
     })
-   	public RespuestaModel registraPlaca(@RequestBody @Valid RegistroModel registroModel){
+   	public Object registraPlaca(@RequestBody @Valid RegistroModel registroModel){
 		
-   		return listaPlacaService.pruebaGet(registroModel);
+   		return listaPlacaService.savePlaca(registroModel);
    	}
 	
 	@ApiOperation(value = "Registra un evento", produces="application/json" )

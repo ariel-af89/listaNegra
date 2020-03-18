@@ -2,8 +2,11 @@ package com.promad.msi.listaplacas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
+import feign.Logger;
+import feign.auth.BasicAuthRequestInterceptor;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -15,6 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
+@EnableFeignClients
 public class ListaplacasApplication {
 
 	public static void main(String[] args) {
@@ -34,4 +38,12 @@ public class ListaplacasApplication {
 				.contact(new Contact("Victor Santana", "https://www.promad.com.mx/", "vsantana@promad.com.mx")).build();
 	}
 
+//	@Bean
+//    public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
+//        return new BasicAuthRequestInterceptor("Pr0m4d", "zvsjiVUtuTOIAEQFHK7lkA==");
+//    }
+	@Bean
+    Logger.Level feignLoggerLevel() {
+        return Logger.Level.FULL;
+    }
 }

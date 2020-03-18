@@ -30,7 +30,7 @@ public class VehiculoInvolucradoModel implements Serializable{
 	private int idSubMarca;
 	
 	@ApiModelProperty(position = 4, required = false,  example = "2018", value = "Corresponderá al año del vehículo", name="modelo")
-	private String modelo;
+	private int modelo;
 	
 	@ApiModelProperty(position = 5, required = false,  example = "20", value = "Corresponde al tipo de vehículo (Catálogo)", name="id Tipo")
 	private int idTipo;
@@ -42,8 +42,9 @@ public class VehiculoInvolucradoModel implements Serializable{
 	private int idProcedencia;
 	
 	@ApiModelProperty(position = 8, required = false,  example = "5", value = "Origen del reporte (Catálogo)", name="Origen")
-	private int origen;
+	private Integer origen;
 	
+	@NotNull(message = "no puede ser nulo" )// 
 	@ApiModelProperty(position = 9, required = false,  example = "1", value = "Tipo de lista a la cual pertenecerá el vehículo* (Catálogo)", name="Tipo de Lista")
-	private int tipoLista;
+	private Integer tipoLista;
 }

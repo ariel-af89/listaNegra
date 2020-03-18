@@ -27,14 +27,14 @@ public class RegistroModel implements Serializable {/**
 	@Valid
 	private VehiculoInvolucradoModel vehiculoInvolucradoModel;
 	
-	@ApiModelProperty(position = 3, required = true, dataType = "string" )
+	@ApiModelProperty(position = 3, required = true, dataType = "string", example = "C5CDMX/PGJ/0001/20191011" )
 	private String averiguacionPrevia;
 	
 	@ApiModelProperty(position = 4, required = true, dataType = "string" )
 	private String observaciones;
 	
 	@NotNull(message = "no puede ser nulo")
-	@ApiModelProperty(position = 5, required = true, value = "tokrn", dataType = "String")
+	@ApiModelProperty(position = 5, required = true, value = "token", dataType = "String", example = "Basic UHIwbTRkOnp2c2ppVlV0dVRPSUFFUUZISzdsa0E9PQ==")
 	private String token;
 	
 

@@ -22,8 +22,8 @@ public class IncidenteModel implements Serializable {
 	private String folio;
 	
 	@NotNull(message = "no puede ser nulo" )
-	@ApiModelProperty(position = 2, required = false, value = "Motivo del incidente (Catálogo)", example = "4", name = "Motivo" )
-	private String motivo;
+	@ApiModelProperty(position = 2, required = true, value = "Motivo del incidente (Catálogo)", example = "4", name = "Motivo" )
+	private Integer motivo;
 	
 	@NotNull(message = "no puede ser nulo" )
 	@ApiModelProperty(position = 3, required = false, value = "Usuario que realizó el registro de la placa en la lista.", example = "C5952123", name="Usuario")

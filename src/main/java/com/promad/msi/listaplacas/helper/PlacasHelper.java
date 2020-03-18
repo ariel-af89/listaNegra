@@ -31,7 +31,7 @@ public class PlacasHelper {
 			vehiculoInvolucrado.setIdSubMarca(registroModel.getVehiculoInvolucradoModel().getIdSubMarca());
 			vehiculoInvolucrado.setIdTipo(registroModel.getVehiculoInvolucradoModel().getIdTipo());
 			vehiculoInvolucrado.setModelo(registroModel.getVehiculoInvolucradoModel().getModelo());
-			vehiculoInvolucrado.setPlaca(registroModel.getVehiculoInvolucradoModel().getPlaca());
+			vehiculoInvolucrado.setPlaca(registroModel.getVehiculoInvolucradoModel().getPlaca().replaceAll("[^A-Z0-9]", ""));
 			vehiculoInvolucrado.setTipoLista(registroModel.getVehiculoInvolucradoModel().getTipoLista());
 			
 			eventoRepository.setVehiculoInvolucrado(vehiculoInvolucrado);

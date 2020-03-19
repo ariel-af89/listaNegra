@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @ApiModel(value = "Registro")
 @Data
 public class RegistroModel implements Serializable {/**
@@ -32,10 +34,6 @@ public class RegistroModel implements Serializable {/**
 	
 	@ApiModelProperty(position = 4, required = true, dataType = "string" )
 	private String observaciones;
-	
-	@NotNull(message = "no puede ser nulo")
-	@ApiModelProperty(position = 5, required = true, value = "token", dataType = "String", example = "Basic UHIwbTRkOnp2c2ppVlV0dVRPSUFFUUZISzdsa0E9PQ==")
-	private String token;
 	
 
 }

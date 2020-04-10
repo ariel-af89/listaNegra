@@ -30,7 +30,7 @@ public class EventoModel {
 	@ApiModelProperty(position = 5, required = false,  example = "5"  )
 	private int idSubMarca;
 	
-	@ApiModelProperty(position = 6, required = false,  example = "ROJO", value = "Color del vehículo", name="Color")
+	@ApiModelProperty(position = 6, required = false,  example = "1", value = "Color del vehículo", name="Color")
 	private String color;
 	
 	@ApiModelProperty(position = 7, required = false,  example = "20", value = "Corresponde al tipo de vehículo (Catálogo)", name="id Tipo")
@@ -59,6 +59,9 @@ public class EventoModel {
 	@ApiModelProperty(position = 14, required = false, dataType = "string" )
 	private String observaciones;
 	
-	@ApiModelProperty(position = 15, required = false, dataType = "BYTE")
-	private byte[] media;
+	@ApiModelProperty(position = 15, required = false, dataType = "string")
+	private String placaB64;
+	
+	@ApiModelProperty(position = 16, required = true, dataType = "string", example = "1" )
+	private String claveDispositivo;
 }

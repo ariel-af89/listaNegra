@@ -1,5 +1,7 @@
 package com.promad.msi.listaplacas.helper;
 
+import com.promad.msi.listaplacas.model.EventoModel;
+import com.promad.msi.listaplacas.model.EventoPeticion;
 import com.promad.msi.listaplacas.model.RegistroModel;
 import com.promad.msi.listaplacas.repository.EventoRepository;
 import com.promad.msi.listaplacas.repository.Incidente;
@@ -38,6 +40,34 @@ public class PlacasHelper {
 		}
 		
 		return eventoRepository;
+		
+	}
+	
+	
+	public static EventoPeticion domainToRepository(EventoModel eventoModel) {
+		
+		EventoPeticion eventoPeticion = new EventoPeticion();
+		
+		eventoPeticion.setAveriguacionPrevia(eventoModel.getAveriguacionPrevia());
+		eventoPeticion.setColor(Integer.valueOf(eventoModel.getColor()));
+		eventoPeticion.setIdMarca(eventoModel.getIdMarca());
+		eventoPeticion.setIdProcedencia(eventoModel.getIdProcedencia());
+		eventoPeticion.setIdSubMarca(eventoModel.getIdSubMarca());
+		eventoPeticion.setIdTipo(eventoModel.getIdTipo());
+		eventoPeticion.setPlacaB64(eventoModel.getPlacaB64());
+		eventoPeticion.setModelo(eventoModel.getModelo());
+		eventoPeticion.setObservaciones(eventoModel.getObservaciones());
+		eventoPeticion.setOrigen(eventoModel.getOrigen());
+		eventoPeticion.setPlaca(eventoModel.getPlaca());
+		eventoPeticion.setTipoLista(eventoModel.getTipoLista());
+		eventoPeticion.setIntegracionOrigen("LPR");
+		
+		//eventoPeticion.setSeniasParticulares(seniasParticulares);
+		eventoPeticion.setClaveDispositivo(eventoModel.getClaveDispositivo());
+		//eventoPeticion.setIdEventoVehiculo(eventoModel.getidEventoVehiculo);
+		eventoPeticion.setUuid(5);
+		
+		return eventoPeticion;
 		
 	}
 	

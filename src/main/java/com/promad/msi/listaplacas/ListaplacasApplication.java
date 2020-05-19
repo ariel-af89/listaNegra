@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
+import feign.Client;
 import feign.Logger;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -45,4 +46,8 @@ public class ListaplacasApplication {
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }
+	@Bean
+	public Client feignClient() {
+	    return new Client.Default(null, null);
+	}
 }

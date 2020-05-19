@@ -1,5 +1,7 @@
 package com.promad.msi.listaplacas.service;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,9 +19,15 @@ public class ListaPlacaService {
 	@Value("${autenticacion.token}")
 	private String token;
 	
+	@Value("${url.save}")
+	private String save;
+	
+	
 	public Object savePlaca(RegistroModel registroModel) {
 		
-		return listaPlacas.savePlaca(token,PlacasHelper.domainToRepository(registroModel));
+		URI baseUrl = URI.create(save);
+		
+		return listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(registroModel));
 		
 	}
 	

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.promad.msi.listaplacas.model.EventoPeticion;
 
-@FeignClient(value = "eventoPlaca", url = "http://52.9.236.138:9287/api/emergenciasExternas")
+@FeignClient(value = "eventoPlaca", url = "${url.evento}")
 public interface EventoPlaca {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/saveEventoExternoLPR", produces = "application/json")

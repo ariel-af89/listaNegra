@@ -1,6 +1,8 @@
 package com.promad.msi.listaplacas.controller;
 
 
+import java.net.URISyntaxException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class ListaPlacasController {
             @ApiResponse(code = 400, message = "Bad Request", response = ErrorDescriptor.class),
             @ApiResponse(code = 500, message = "Internal server error", response = ErrorDescriptor.class)
     })
-   	public Object registraPlaca(@RequestBody @Valid RegistroModel registroModel){
+   	public Object registraPlaca(@RequestBody @Valid RegistroModel registroModel) throws URISyntaxException{
 		
    		return listaPlacaService.savePlaca(registroModel);
    	}

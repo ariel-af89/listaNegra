@@ -39,6 +39,7 @@ public class PlacasHelper {
 			eventoRepository.setVehiculoInvolucrado(vehiculoInvolucrado);
 		}
 		
+		
 		return eventoRepository;
 		
 	}

@@ -68,6 +68,8 @@ public class PlacasHelper {
 		//eventoPeticion.setIdEventoVehiculo(eventoModel.getidEventoVehiculo);
 		eventoPeticion.setUuid(5);
 		
+		System.out.println(eventoPeticion.toString());
+		
 		return eventoPeticion;
 		
 	}

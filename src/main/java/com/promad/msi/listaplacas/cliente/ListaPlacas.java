@@ -1,6 +1,5 @@
 package com.promad.msi.listaplacas.cliente;
 
-
 import java.net.URI;
 
 import org.springframework.cloud.openfeign.FeignClient;

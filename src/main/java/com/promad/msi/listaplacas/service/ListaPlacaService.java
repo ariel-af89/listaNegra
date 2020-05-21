@@ -10,7 +10,10 @@ import com.promad.msi.listaplacas.cliente.ListaPlacas;
 import com.promad.msi.listaplacas.helper.PlacasHelper;
 import com.promad.msi.listaplacas.model.RegistroModel;
 
+import lombok.extern.java.Log;
+
 @Service
+@Log
 public class ListaPlacaService {
 	
 	@Autowired
@@ -24,9 +27,8 @@ public class ListaPlacaService {
 	
 	
 	public Object savePlaca(RegistroModel registroModel) {
-		
+	
 		URI baseUrl = URI.create(save);
-		
 		return listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(registroModel));
 		
 	}

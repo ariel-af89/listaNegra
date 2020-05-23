@@ -16,6 +16,7 @@ import lombok.extern.java.Log;
 
 
 @Service
+@Log
 public class EventoService {
 	
 	
@@ -25,6 +26,7 @@ public class EventoService {
 	
 	@Value("${url.evento}")
 	private String evento;
+	
 	
 	public Object creaEvento(EventoModel eventoModel) throws JsonProcessingException {
 

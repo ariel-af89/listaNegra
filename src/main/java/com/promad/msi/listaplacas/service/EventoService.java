@@ -23,7 +23,6 @@ public class EventoService {
 	@Autowired
 	EventoPlaca eventoPlaca;
 	
-	
 	@Value("${url.evento}")
 	private String evento;
 	

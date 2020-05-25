@@ -32,7 +32,8 @@ public class EventoService {
 
 		URI baseUrl = URI.create(evento);
 		
-		System.out.println(evento);
+		System.out.println("evento ::::::::::::::::::::::::::: " + evento);
+		System.out.println("url ::::::::::::::::::::::::::::::::::::::::::: " + baseUrl);
 		
 		return eventoPlaca.guardaEvento(baseUrl,PlacasHelper.domainToRepository(eventoModel));
 		

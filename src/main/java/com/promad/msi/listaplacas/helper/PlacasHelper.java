@@ -27,7 +27,8 @@ public class PlacasHelper {
 			
 			//vehiculo
 			VehiculoInvolucrado vehiculoInvolucrado = new VehiculoInvolucrado();
-			vehiculoInvolucrado.setColor(registroModel.getVehiculoInvolucradoModel().getColor());
+//			vehiculoInvolucrado.setColor(registroModel.getVehiculoInvolucradoModel().getColor());
+			vehiculoInvolucrado.setColor("0");
 			vehiculoInvolucrado.setIdMarca(registroModel.getVehiculoInvolucradoModel().getIdMarca());
 			vehiculoInvolucrado.setIdProcedencia(registroModel.getVehiculoInvolucradoModel().getIdProcedencia());
 			vehiculoInvolucrado.setIdSubMarca(registroModel.getVehiculoInvolucradoModel().getIdSubMarca());
@@ -50,7 +51,8 @@ public class PlacasHelper {
 		EventoPeticion eventoPeticion = new EventoPeticion();
 		
 		eventoPeticion.setAveriguacionPrevia(eventoModel.getAveriguacionPrevia());
-		eventoPeticion.setColor(Integer.valueOf(eventoModel.getColor()));
+//		eventoPeticion.setColor(Integer.valueOf(eventoModel.getColor()));
+		eventoPeticion.setColor(0);
 		eventoPeticion.setIdMarca(eventoModel.getIdMarca());
 		eventoPeticion.setIdProcedencia(eventoModel.getIdProcedencia());
 		eventoPeticion.setIdSubMarca(eventoModel.getIdSubMarca());

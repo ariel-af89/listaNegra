@@ -26,7 +26,6 @@ public class EventoService {
 	@Value("${url.evento}")
 	private String evento;
 	
-	
 	public Object creaEvento(EventoModel eventoModel) throws JsonProcessingException {
 
 		URI baseUrl = URI.create(evento);

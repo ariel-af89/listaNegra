@@ -38,6 +38,7 @@ public class ListaplacasApplication {
 				.contact(new Contact("Victor Santana", "https://www.promad.com.mx/", "vsantana@promad.com.mx")).build();
 	}
 
+
 //	@Bean
 //    public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
 //        return new BasicAuthRequestInterceptor("Pr0m4d", "zvsjiVUtuTOIAEQFHK7lkA==");

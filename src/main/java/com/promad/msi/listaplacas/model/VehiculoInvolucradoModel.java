@@ -2,6 +2,7 @@ package com.promad.msi.listaplacas.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -38,7 +39,7 @@ public class VehiculoInvolucradoModel implements Serializable{
 	private int idTipo;
 	
 	@ApiModelProperty(position = 6, required = false,  example = "1", value = "Color del vehículo", name="Color")
-	@NumberFormat
+	@Digits(integer = 1, fraction = 0, message = "debe ser número" )
 	private String color;
 	
 	@ApiModelProperty(position = 7, required = false,  example = "16", value = "Corresponde a la Ciudad de origen del vehículo (Catálogo)", name="id Procedencia")

@@ -27,8 +27,7 @@ public class PlacasHelper {
 			
 			//vehiculo
 			VehiculoInvolucrado vehiculoInvolucrado = new VehiculoInvolucrado();
-//			vehiculoInvolucrado.setColor(registroModel.getVehiculoInvolucradoModel().getColor());
-			vehiculoInvolucrado.setColor("0");
+			vehiculoInvolucrado.setColor(registroModel.getVehiculoInvolucradoModel().getColor());
 			vehiculoInvolucrado.setIdMarca(registroModel.getVehiculoInvolucradoModel().getIdMarca());
 			vehiculoInvolucrado.setIdProcedencia(registroModel.getVehiculoInvolucradoModel().getIdProcedencia());
 			vehiculoInvolucrado.setIdSubMarca(registroModel.getVehiculoInvolucradoModel().getIdSubMarca());

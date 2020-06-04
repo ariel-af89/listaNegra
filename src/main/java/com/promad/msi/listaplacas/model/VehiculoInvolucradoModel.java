@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -35,7 +37,8 @@ public class VehiculoInvolucradoModel implements Serializable{
 	@ApiModelProperty(position = 5, required = false,  example = "20", value = "Corresponde al tipo de vehículo (Catálogo)", name="id Tipo")
 	private int idTipo;
 	
-	@ApiModelProperty(position = 6, required = false,  example = "ROJO", value = "Color del vehículo", name="Color")
+	@ApiModelProperty(position = 6, required = false,  example = "1", value = "Color del vehículo", name="Color")
+	@NumberFormat
 	private String color;
 	
 	@ApiModelProperty(position = 7, required = false,  example = "16", value = "Corresponde a la Ciudad de origen del vehículo (Catálogo)", name="id Procedencia")

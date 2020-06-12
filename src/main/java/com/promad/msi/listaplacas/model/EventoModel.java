@@ -20,7 +20,7 @@ public class EventoModel {
 	private String descripcion;
 	
 	@ApiModelProperty(position = 3, required = true,  example = "123ABC"  )
-	@Pattern(regexp ="^(([A-Z0-9]{5,6})|(([A-Z0-9]{5}-([A-Z0-9]{2}))|([A-Z0-9]{3}-([A-Z0-9]{1}))|([A-Z0-9]{1,3}-[A-Z0-9]{2,5}))|((([A-Z0-9]{1}-[A-Z0-9]{2,5}-[A-Z0-9]{1,3})|([A-Z0-9]{2}-[A-Z0-9]{1,4}-[A-Z0-9]{1,3})|([A-Z0-9]{3}-[A-Z0-9]{2,3}-[A-Z0-9]{1,3}))))$", message = "No es un formato de placa válido" )
+	//@Pattern(regexp ="^(([A-Z0-9]{5,6})|(([A-Z0-9]{5}-([A-Z0-9]{2}))|([A-Z0-9]{3}-([A-Z0-9]{1}))|([A-Z0-9]{1,3}-[A-Z0-9]{2,5}))|((([A-Z0-9]{1}-[A-Z0-9]{2,5}-[A-Z0-9]{1,3})|([A-Z0-9]{2}-[A-Z0-9]{1,4}-[A-Z0-9]{1,3})|([A-Z0-9]{3}-[A-Z0-9]{2,3}-[A-Z0-9]{1,3}))))$", message = "No es un formato de placa válido" )
 	@NotNull
 	private String placa;
 	

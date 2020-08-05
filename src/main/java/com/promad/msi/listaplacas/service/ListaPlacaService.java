@@ -28,10 +28,7 @@ public class ListaPlacaService {
 	@Value("${alta.usuario}")
 	private String usuarioAlta;
 	
-	public Object savePlaca(RegistroModel registroModel) {
-	
-		registroModel.getIncidenteModel().setUsuario(usuarioAlta);
-		
+	public Object savePlaca(RegistroModel registroModel) {		
 		URI baseUrl = URI.create(save);
 		return listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(registroModel));
 		

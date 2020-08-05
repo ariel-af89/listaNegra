@@ -29,6 +29,8 @@ public class ListaPlacaService {
 	private String usuarioAlta;
 	
 	public Object savePlaca(RegistroModel registroModel) {
+		
+		System.out.println("se recibe: "+ registroModel.toString());
 	
 		registroModel.getIncidenteModel().setUsuario(usuarioAlta);
 		

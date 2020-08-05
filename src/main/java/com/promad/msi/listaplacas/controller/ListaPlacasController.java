@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/placa")
 @Api(value = "Alta placas", description = "Dar de alta una placa" )
 @CrossOrigin()
 public class ListaPlacasController {

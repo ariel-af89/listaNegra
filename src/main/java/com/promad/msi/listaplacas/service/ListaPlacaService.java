@@ -32,7 +32,6 @@ public class ListaPlacaService {
 		
 		System.out.println("se recibe: "+ registroModel.toString());
 	
-		registroModel.getIncidenteModel().setUsuario(usuarioAlta);
 		
 		URI baseUrl = URI.create(save);
 		return listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(registroModel));

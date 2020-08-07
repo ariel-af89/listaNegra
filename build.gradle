@@ -26,6 +26,8 @@ dependencies {
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.2.2.RELEASE'
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-ribbon
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version: '2.2.2.RELEASE'
+	// https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.8.1'
 	
 	
 	//Documentacion

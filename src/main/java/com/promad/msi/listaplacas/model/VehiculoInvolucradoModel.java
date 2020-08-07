@@ -38,8 +38,7 @@ public class VehiculoInvolucradoModel implements Serializable{
 	@ApiModelProperty(position = 5, required = false,  example = "20", value = "Corresponde al tipo de vehículo (Catálogo)", name="id Tipo")
 	private int idTipo;
 	
-	@ApiModelProperty(position = 6, required = false,  example = "1", value = "Color del vehículo", name="Color")
-	@Digits(integer = 1, fraction = 0, message = "debe ser número" )
+	@ApiModelProperty(position = 6, required = false,  example = "ROJO", value = "Color del vehículo", name="Color")
 	private String color;
 	
 	@ApiModelProperty(position = 7, required = false,  example = "16", value = "Corresponde a la Ciudad de origen del vehículo (Catálogo)", name="id Procedencia")

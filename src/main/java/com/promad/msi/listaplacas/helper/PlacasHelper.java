@@ -14,6 +14,7 @@ public class PlacasHelper {
 		EventoRepository eventoRepository = new EventoRepository();
 		
 		if(registroModel.getIncidenteModel()!=null && registroModel.getVehiculoInvolucradoModel() != null ) {
+			
 			//incidente
 			Incidente incidente = new Incidente();
 			incidente.setAveriguacionPrevia(registroModel.getAveriguacionPrevia());
@@ -37,8 +38,10 @@ public class PlacasHelper {
 			vehiculoInvolucrado.setTipoLista(registroModel.getVehiculoInvolucradoModel().getTipoLista());
 			
 			eventoRepository.setVehiculoInvolucrado(vehiculoInvolucrado);
+			
 		}
 		
+		System.out.println("se manda---" + eventoRepository.toString());
 		
 		return eventoRepository;
 		
@@ -69,7 +72,7 @@ public class PlacasHelper {
 		//eventoPeticion.setIdEventoVehiculo(eventoModel.getidEventoVehiculo);
 		eventoPeticion.setUuid(5);
 		
-		System.out.println(eventoPeticion.toString());
+		System.out.println("Se recibe---" +eventoPeticion.toString());
 		
 		return eventoPeticion;
 		

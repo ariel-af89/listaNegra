@@ -13,5 +13,12 @@ public class EventoRepository {
 	private VehiculoInvolucrado VehiculoInvolucrado;
 	@JsonProperty("Incidente")
 	private Incidente Incidente;
+	@Override
+	public String toString() {
+		return "EventoRepository [Usuario=" + Usuario + ", VehiculoInvolucrado=" + VehiculoInvolucrado + ", Incidente="
+				+ Incidente + "]";
+	}
+	
+	
 
 }

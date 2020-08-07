@@ -19,5 +19,13 @@ public class VehiculoInvolucrado {
 	private int idProcedencia;
 	@JsonProperty("TipoLista")
 	private int TipoLista;
+	@Override
+	public String toString() {
+		return "VehiculoInvolucrado [Placa=" + Placa + ", idMarca=" + idMarca + ", idSubMarca=" + idSubMarca
+				+ ", Modelo=" + Modelo + ", idTipo=" + idTipo + ", Color=" + Color + ", idProcedencia=" + idProcedencia
+				+ ", TipoLista=" + TipoLista + "]";
+	}
+	
+	
 
 }

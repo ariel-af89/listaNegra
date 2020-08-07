@@ -32,8 +32,16 @@ public class RegistroModel implements Serializable {/**
 	@ApiModelProperty(position = 3, required = true, dataType = "string", example = "C5CDMX/PGJ/0001/20191011" )
 	private String averiguacionPrevia;
 	
-	@ApiModelProperty(position = 4, required = true, dataType = "string" )
+	@ApiModelProperty(position = 4, required = true, dataType = "string", example = "Ejemplo de Swagger" )
 	private String observaciones;
+
+	@Override
+	public String toString() {
+		return "RegistroModel [incidenteModel=" + incidenteModel + ", vehiculoInvolucradoModel="
+				+ vehiculoInvolucradoModel + ", averiguacionPrevia=" + averiguacionPrevia + ", observaciones="
+				+ observaciones + "]";
+	}
 	
 
+	
 }

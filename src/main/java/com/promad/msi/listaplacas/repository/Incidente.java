@@ -15,5 +15,12 @@ public class Incidente {
 	private String AveriguacionPrevia;
 	@JsonProperty("Observaciones")
 	private String Observaciones;
+	@Override
+	public String toString() {
+		return "Incidente [Folio=" + Folio + ", idMotivo=" + idMotivo + ", idOrigen=" + idOrigen
+				+ ", AveriguacionPrevia=" + AveriguacionPrevia + ", Observaciones=" + Observaciones + "]";
+	}
+	
+	
 
 }

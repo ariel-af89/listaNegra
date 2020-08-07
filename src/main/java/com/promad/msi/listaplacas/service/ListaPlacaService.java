@@ -42,7 +42,7 @@ public class ListaPlacaService {
 				MediaType mediaType = MediaType.parse("application/json");
 				RequestBody body = RequestBody.create(mediaType, "{\"Usuario\":\"ARIEL\",\"VehiculoInvolucrado\":{\"idMarca\":10,\"idSubMarca\":5,\"idTipo\":20,\"idProcedencia\":16,\"Placa\":\"123ABC\",\"Modelo\":2018,\"Color\":\"ROJO\",\"TipoLista\":1},\"Incidente\":{\"idMotivo\":4,\"idOrigen\":5,\"Folio\":\"C5/20191125/01245\",\"AveriguacionPrevia\":\"C5CDMX/PGJ/0001/20191011\",\"Observaciones\":\"string\"}}");
 				Request request = new Request.Builder()
-				  .url("http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placa.php")
+				  .url("http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placas.php")
 				  .method("POST", body)
 				  .addHeader("Authorization", "Bearer UHIwbTRkOnp2c2ppVlV0dVRPSUFFUUZISzdsa0E9PQ==")
 				  .addHeader("Content-Type", "application/json")

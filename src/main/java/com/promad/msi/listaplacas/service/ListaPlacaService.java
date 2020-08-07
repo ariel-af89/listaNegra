@@ -39,10 +39,16 @@ public class ListaPlacaService {
 		System.out.println("se recibe: "+ registroModel.toString());
 		OkHttpClient client = new OkHttpClient().newBuilder()
 				  .build();
-				MediaType mediaType = MediaType.parse("application/json");
-				RequestBody body = RequestBody.create(mediaType, "{\"Usuario\":\"ARIEL\",\"VehiculoInvolucrado\":{\"idMarca\":10,\"idSubMarca\":5,\"idTipo\":20,\"idProcedencia\":16,\"Placa\":\"123ABC\",\"Modelo\":2018,\"Color\":\"ROJO\",\"TipoLista\":1},\"Incidente\":{\"idMotivo\":4,\"idOrigen\":5,\"Folio\":\"C5/20191125/01245\",\"AveriguacionPrevia\":\"C5CDMX/PGJ/0001/20191011\",\"Observaciones\":\"string\"}}");
-				Request request = new Request.Builder()
-				  .url("http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placas.php")
+//				MediaType mediaType = MediaType.parse("application/json");
+//				RequestBody body = RequestBody.create(mediaType, "{\"Usuario\":\"ARIEL\",\"VehiculoInvolucrado\":{\"idMarca\":10,\"idSubMarca\":5,\"idTipo\":20,\"idProcedencia\":16,\"Placa\":\"123ABC\",\"Modelo\":2018,\"Color\":\"ROJO\",\"TipoLista\":1},\"Incidente\":{\"idMotivo\":4,\"idOrigen\":5,\"Folio\":\"C5/20191125/01245\",\"AveriguacionPrevia\":\"C5CDMX/PGJ/0001/20191011\",\"Observaciones\":\"string\"}}");
+//				Request request = new Request.Builder()
+//				  .url("http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placas.php")
+		MediaType mediaType = MediaType.parse("application/json");
+		RequestBody body = RequestBody.create(mediaType, "{\n\"extensionDispositivo\":\"110\",\n\"idDispositivo\":\"911\", \n\"idLlamada\":\"2020-01-23_31946_110\",\n\"fechaInicioEvento\":\"1579814386173\",\n\"integracionOrigen\":\"BOTON\",\n\"descripcion\":\"UNIQUE_ID:2020-01-23_31946_110\"\n}\n");
+		Request request = new Request.Builder()
+		  .url("http://34.226.133.73:9287/api/emergenciasExternas/saveEventoExternoBoton")
+		
+		
 				  .method("POST", body)
 				  .addHeader("Authorization", "Bearer UHIwbTRkOnp2c2ppVlV0dVRPSUFFUUZISzdsa0E9PQ==")
 				  .addHeader("Content-Type", "application/json")

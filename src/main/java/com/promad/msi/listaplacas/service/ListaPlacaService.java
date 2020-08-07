@@ -44,18 +44,16 @@ public class ListaPlacaService {
 //				Request request = new Request.Builder()
 //				  .url("http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placas.php")
 		MediaType mediaType = MediaType.parse("application/json");
-		RequestBody body = RequestBody.create(mediaType, "{\n\"extensionDispositivo\":\"110\",\n\"idDispositivo\":\"911\", \n\"idLlamada\":\"2020-01-23_31946_110\",\n\"fechaInicioEvento\":\"1579814386173\",\n\"integracionOrigen\":\"BOTON\",\n\"descripcion\":\"UNIQUE_ID:2020-01-23_31946_110\"\n}\n");
+		RequestBody body = RequestBody.create(mediaType, "{\"login\":\"login\",\"password\":\"password\"}");
 		Request request = new Request.Builder()
-		  .url("http://34.226.133.73:9287/api/emergenciasExternas/saveEventoExternoBoton")
-		
-		
-				  .method("POST", body)
-				  .addHeader("Authorization", "Bearer UHIwbTRkOnp2c2ppVlV0dVRPSUFFUUZISzdsa0E9PQ==")
-				  .addHeader("Content-Type", "application/json")
-				  .build();
+		  .url("https://reqbin.com/echo/post/json")
+		  .method("POST", body)
+		  .addHeader("Content-Type", "application/json")
+		  .addHeader("Cookie", "__cfduid=d3bbdf21352a833cf5ff9979918087b701596833935")
+		  .build();
 				try {
 					Response response = client.newCall(request).execute();
-					System.out.println("Respuesta C5 Postman:" +  response.message()+" codigo "+ response.code());
+					System.out.println("URL https://reqbin.com/echo/post/json "+ "Respuesta  Postman: " +  response.message()+" codigo "+ response.code());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Error en Cliente Postman:" + e.getMessage());

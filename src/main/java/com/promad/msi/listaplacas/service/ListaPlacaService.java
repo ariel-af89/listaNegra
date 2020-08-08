@@ -39,21 +39,18 @@ public class ListaPlacaService {
 		System.out.println("se recibe: "+ registroModel.toString());
 		OkHttpClient client = new OkHttpClient().newBuilder()
 				  .build();
-//				MediaType mediaType = MediaType.parse("application/json");
-//				RequestBody body = RequestBody.create(mediaType, "{\"Usuario\":\"ARIEL\",\"VehiculoInvolucrado\":{\"idMarca\":10,\"idSubMarca\":5,\"idTipo\":20,\"idProcedencia\":16,\"Placa\":\"123ABC\",\"Modelo\":2018,\"Color\":\"ROJO\",\"TipoLista\":1},\"Incidente\":{\"idMotivo\":4,\"idOrigen\":5,\"Folio\":\"C5/20191125/01245\",\"AveriguacionPrevia\":\"C5CDMX/PGJ/0001/20191011\",\"Observaciones\":\"string\"}}");
-//				Request request = new Request.Builder()
-//				  .url("http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placas.php")
+
 		MediaType mediaType = MediaType.parse("application/json");
-		RequestBody body = RequestBody.create(mediaType, "{\"login\":\"login\",\"password\":\"password\"}");
+		RequestBody body = RequestBody.create(mediaType, "{\"Usuario\":\"ARIEL\",\"VehiculoInvolucrado\":{\"idMarca\":10,\"idSubMarca\":5,\"idTipo\":20,\"idProcedencia\":16,\"Placa\":\"123ABC\",\"Modelo\":2018,\"Color\":\"ROJO\",\"TipoLista\":1},\"Incidente\":{\"idMotivo\":4,\"idOrigen\":5,\"Folio\":\"C5/20191125/01245\",\"AveriguacionPrevia\":\"C5CDMX/PGJ/0001/20191011\",\"Observaciones\":\"string\"}}");
 		Request request = new Request.Builder()
-		  .url("https://reqbin.com/echo/post/json")
+		  .url("http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placas.php")
 		  .method("POST", body)
+		  .addHeader("Authorization", "Bearer UHIwbTRkOnp2c2ppVlV0dVRPSUFFUUZISzdsa0E9PQ==")
 		  .addHeader("Content-Type", "application/json")
-		  .addHeader("Cookie", "__cfduid=d3bbdf21352a833cf5ff9979918087b701596833935")
 		  .build();
 				try {
 					Response response = client.newCall(request).execute();
-					System.out.println("URL https://reqbin.com/echo/post/json "+ "Respuesta  Postman: " +  response.message()+" codigo "+ response.code());
+					System.out.println("URL http://43306fc1.ngrok.io/WebServices/WsListaNegra/Placas.php "+ "Respuesta  Postman: " +  response.message()+" codigo "+ response.code());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Error en Cliente Postman:" + e.getMessage());

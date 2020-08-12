@@ -35,7 +35,7 @@ public class ListaPlacaService {
 	private String usuarioAlta;
 	
 	public Object savePlaca(RegistroModel registroModel) {		
-		System.out.println("prueba 12_agos se recibe: "+ registroModel.toString());		
+		System.out.println("prueba 12_agos --------- se recibe: "+ registroModel.toString());		
 		URI baseUrl = URI.create(save);
 		return listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(registroModel));
 	}

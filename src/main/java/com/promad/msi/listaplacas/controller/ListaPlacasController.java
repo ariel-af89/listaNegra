@@ -66,5 +66,14 @@ public class ListaPlacasController {
 		
    		return eventoService.creaEvento(eventoModel);
    	}
+	
+	
+
+    @RequestMapping(value = "/prueba", method = RequestMethod.POST )   
+   	public void creaEvento(@RequestBody @Valid RegistroModel registroModel) throws JsonProcessingException{
+		
+   	   eventoService.creaPrueba(registroModel);
+   	}
+
 
 }

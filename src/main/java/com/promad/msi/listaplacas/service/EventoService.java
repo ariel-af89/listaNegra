@@ -96,8 +96,11 @@ public class EventoService {
 		
 	     ResponseEntity<Object> restTemplate = new RestTemplate().exchange(url, HttpMethod.POST, request, Object.class);	
 			
-			log.info("URL::"+((EventoModel) restTemplate.getBody()).getStatus().toLowerCase());
+			log.info("URL::" +restTemplate.getStatusCodeValue());
 
+			log.info("URL::" +restTemplate.getStatusCode());
+			
+			log.info("URL::" +restTemplate.getBody().toString());
 			log.info(restTemplate.getBody().toString());
 			
 			

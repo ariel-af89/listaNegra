@@ -110,7 +110,6 @@ public class EventoService {
 			e.printStackTrace();
 		}
  			 
-		log.info("::::::::::::::::::::::::::::::::: :: resultadoEnvio a centro " +  resultado.block() );
 		
 		
 		

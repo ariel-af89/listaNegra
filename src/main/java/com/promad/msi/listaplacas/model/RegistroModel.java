@@ -29,7 +29,7 @@ public class RegistroModel implements Serializable {/**
 	@Valid
 	private VehiculoInvolucradoModel vehiculoInvolucradoModel;
 	
-	@ApiModelProperty(position = 3, required = true, dataType = "string", example = "C5CDMX/PGJ/0001/20191011" )
+	@ApiModelProperty(position = 3, required = true, dataType = "string", example = "C5C/123/123")
 	private String averiguacionPrevia;
 	
 	@ApiModelProperty(position = 4, required = true, dataType = "string", example = "Ejemplo de Swagger" )

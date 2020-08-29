@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.NumberFormat;
 
@@ -39,6 +40,7 @@ public class VehiculoInvolucradoModel implements Serializable{
 	private int idTipo;
 	
 	@ApiModelProperty(position = 6, required = false,  example = "ROJO", value = "Color del vehículo", name="Color")
+	@Size(min = 1, max = 10)
 	private String color;
 	
 	@ApiModelProperty(position = 7, required = false,  example = "16", value = "Corresponde a la Ciudad de origen del vehículo (Catálogo)", name="id Procedencia")

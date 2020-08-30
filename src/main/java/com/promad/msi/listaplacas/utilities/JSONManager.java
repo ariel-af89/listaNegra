@@ -100,11 +100,20 @@ public class JSONManager {
 	}
 
 	public static JSONArray getArrayFromJsonFile() {
-		// JSON parser object to parse read file
+		String startDir = System.getProperty("user.dir");
+		File archivo = new File(startDir + "\\registros.json");
+
+		if (!archivo.exists()) {
+			try {
+				archivo.createNewFile();
+			} catch (IOException e) {
+				System.out.println("Error al crear el archivo: " + e.getMessage());
+			}
+		}
 		JSONParser jsonParser = new JSONParser();
 		RegistroModel rm = new RegistroModel();
 
-		try (FileReader reader = new FileReader("registros.json")) {
+		try (FileReader reader = new FileReader(archivo)) {
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
 			JSONArray registrosList = (JSONArray) obj;

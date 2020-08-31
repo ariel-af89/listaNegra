@@ -29,9 +29,9 @@ public class JSONManager {
 	public static boolean updateJsonFile(String jsonString) {
 		String startDir = System.getProperty("user.dir");
 		File archivo = new File(startDir + "\\registros.json");
-		LOG.info("---UPDATE---");
 		if (!archivo.exists()) {
 			try {
+				LOG.info("---NO EXISTE---");
 				archivo.createNewFile();
 			} catch (IOException e) {
 				LOG.error("Error al crear el archivo: " + e.getMessage());
@@ -52,6 +52,7 @@ public class JSONManager {
 
 	@SuppressWarnings("unchecked")
 	public static boolean saveToJsonFile(RegistroModel rm) {
+		LOG.info("---SAVE TO JSON FILE---");
 		JSONObject registro = new JSONObject();
 		JSONArray registroList = getArrayFromJsonFile();
 		try {	
@@ -99,7 +100,7 @@ public class JSONManager {
 			registroList.add(registroObject);
 
 		} catch (Exception e) {
-			LOG.error(e.getMessage());
+			LOG.error("Error in SAVE"e.getMessage());
 		}
 		return updateJsonFile(registroList.toJSONString());
 	}

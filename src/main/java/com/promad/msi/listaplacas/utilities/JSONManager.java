@@ -29,7 +29,7 @@ public class JSONManager {
 	public static boolean updateJsonFile(String jsonString) {
 		String startDir = System.getProperty("user.dir");
 		File archivo = new File(startDir + "\\registros.json");
-
+		LOG.info("---UPDATE---");
 		if (!archivo.exists()) {
 			try {
 				archivo.createNewFile();
@@ -38,7 +38,8 @@ public class JSONManager {
 			}
 		}
 
-		try (FileWriter file = new FileWriter(archivo)) {
+		try  {
+			FileWriter file = new FileWriter(archivo);
 			file.write(jsonString);
 			file.flush();
 			return true;

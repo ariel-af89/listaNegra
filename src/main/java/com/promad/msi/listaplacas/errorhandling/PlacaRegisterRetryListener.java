@@ -46,7 +46,12 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 			
 			if(ListaPlacaService.getCurrentRegistroModel()!=null) {
 				LOG.info("Save to JSON placa");
+				try {				
+				
 				JSONManager.saveToJsonFile(ListaPlacaService.getCurrentRegistroModel());
+				} catch (Exception e) {
+					LOG.error(e.getMessage()+ " Se envio: " + ListaPlacaService.getCurrentRegistroModel());
+				}
 			}
 		}else { 
 			LOG.info("Get JSON");

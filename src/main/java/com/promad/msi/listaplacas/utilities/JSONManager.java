@@ -24,7 +24,8 @@ import com.promad.msi.listaplacas.model.RegistroModel;
 import com.promad.msi.listaplacas.model.VehiculoInvolucradoModel;
 
 public class JSONManager {
-	private final static Log LOG= LogFactory.getLog(PlacaRegisterRetryListener.class);
+	private final static Log LOG = LogFactory.getLog(PlacaRegisterRetryListener.class);
+
 	public static boolean updateJsonFile(String jsonString) {
 		String startDir = System.getProperty("user.dir");
 		File archivo = new File(startDir + "\\registros.json");
@@ -48,54 +49,57 @@ public class JSONManager {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public static boolean saveToJsonFile(RegistroModel rm) {
-		// First registro
 		JSONObject registro = new JSONObject();
-
-		JSONObject incidenteObjectJSON = new JSONObject();
-
-		String folio = rm.getIncidenteModel().getFolio();
-		incidenteObjectJSON.put("folio", folio != null ? folio : "");
-		Integer motivo = rm.getIncidenteModel().getMotivo();
-		incidenteObjectJSON.put("motivo", motivo != null ? motivo : 0);
-		String usuario = rm.getIncidenteModel().getUsuario();
-		incidenteObjectJSON.put("usuario", usuario != null ? usuario : "");
-		registro.put("Incidente", incidenteObjectJSON);
-
-		JSONObject vehiculoObjectJSON = new JSONObject();
-		String placa = rm.getVehiculoInvolucradoModel().getPlaca();
-		vehiculoObjectJSON.put("placa", placa != null ? placa : "");
-
-		Integer idMarca = rm.getVehiculoInvolucradoModel().getIdMarca();
-		vehiculoObjectJSON.put("idMarca", idMarca != null ? idMarca : 0);
-		Integer idSubMarca = rm.getVehiculoInvolucradoModel().getIdSubMarca();
-		vehiculoObjectJSON.put("idSubMarca", idSubMarca != null ? idSubMarca : 0);
-		Integer modelo = rm.getVehiculoInvolucradoModel().getModelo();
-		vehiculoObjectJSON.put("modelo", modelo != null ? modelo : 0);
-		Integer idTipo = rm.getVehiculoInvolucradoModel().getIdTipo();
-		vehiculoObjectJSON.put("idTipo", idTipo != null ? idTipo : 0);
-		String color = rm.getVehiculoInvolucradoModel().getColor();
-		vehiculoObjectJSON.put("color", color != null ? color : "");
-		Integer idProcedencia = rm.getVehiculoInvolucradoModel().getIdProcedencia();
-		vehiculoObjectJSON.put("idProcedencia", idProcedencia != null ? idProcedencia : 0);
-		Integer origen = rm.getVehiculoInvolucradoModel().getOrigen();
-		vehiculoObjectJSON.put("origen", origen != null ? origen : 0);
-		Integer tipoLista = rm.getVehiculoInvolucradoModel().getTipoLista();
-		vehiculoObjectJSON.put("tipoLista", tipoLista != null ? tipoLista : 0);
-		registro.put("VehiculoInvolucrado", vehiculoObjectJSON);
-
-		String averiguacionPrevia = rm.getAveriguacionPrevia();
-		registro.put("AveriguacionPrevia", averiguacionPrevia != null ? averiguacionPrevia : "");
-		String obervaciones = rm.getObservaciones();
-		registro.put("Observaciones", obervaciones != null ? obervaciones : "");
-
-		JSONObject registroObject = new JSONObject();
-		registroObject.put("registro", registro);
-
-		// Add registro to list
 		JSONArray registroList = getArrayFromJsonFile();
-		registroList.add(registroObject);
+		try {	
 
+			JSONObject incidenteObjectJSON = new JSONObject();
+
+			String folio = rm.getIncidenteModel().getFolio();
+			incidenteObjectJSON.put("folio", folio != null ? folio : "");
+			Integer motivo = rm.getIncidenteModel().getMotivo();
+			incidenteObjectJSON.put("motivo", motivo != null ? motivo : 0);
+			String usuario = rm.getIncidenteModel().getUsuario();
+			incidenteObjectJSON.put("usuario", usuario != null ? usuario : "");
+			registro.put("Incidente", incidenteObjectJSON);
+
+			JSONObject vehiculoObjectJSON = new JSONObject();
+			String placa = rm.getVehiculoInvolucradoModel().getPlaca();
+			vehiculoObjectJSON.put("placa", placa != null ? placa : "");
+
+			Integer idMarca = rm.getVehiculoInvolucradoModel().getIdMarca();
+			vehiculoObjectJSON.put("idMarca", idMarca != null ? idMarca : 0);
+			Integer idSubMarca = rm.getVehiculoInvolucradoModel().getIdSubMarca();
+			vehiculoObjectJSON.put("idSubMarca", idSubMarca != null ? idSubMarca : 0);
+			Integer modelo = rm.getVehiculoInvolucradoModel().getModelo();
+			vehiculoObjectJSON.put("modelo", modelo != null ? modelo : 0);
+			Integer idTipo = rm.getVehiculoInvolucradoModel().getIdTipo();
+			vehiculoObjectJSON.put("idTipo", idTipo != null ? idTipo : 0);
+			String color = rm.getVehiculoInvolucradoModel().getColor();
+			vehiculoObjectJSON.put("color", color != null ? color : "");
+			Integer idProcedencia = rm.getVehiculoInvolucradoModel().getIdProcedencia();
+			vehiculoObjectJSON.put("idProcedencia", idProcedencia != null ? idProcedencia : 0);
+			Integer origen = rm.getVehiculoInvolucradoModel().getOrigen();
+			vehiculoObjectJSON.put("origen", origen != null ? origen : 0);
+			Integer tipoLista = rm.getVehiculoInvolucradoModel().getTipoLista();
+			vehiculoObjectJSON.put("tipoLista", tipoLista != null ? tipoLista : 0);
+			registro.put("VehiculoInvolucrado", vehiculoObjectJSON);
+
+			String averiguacionPrevia = rm.getAveriguacionPrevia();
+			registro.put("AveriguacionPrevia", averiguacionPrevia != null ? averiguacionPrevia : "");
+			String obervaciones = rm.getObservaciones();
+			registro.put("Observaciones", obervaciones != null ? obervaciones : "");
+
+			JSONObject registroObject = new JSONObject();
+			registroObject.put("registro", registro);
+
+			registroList.add(registroObject);
+
+		} catch (Exception e) {
+			LOG.error(e.getMessage());
+		}
 		return updateJsonFile(registroList.toJSONString());
 	}
 

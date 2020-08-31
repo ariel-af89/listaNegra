@@ -42,15 +42,14 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 	
 	@Override
 	public <T, E extends Throwable> void close(RetryContext context, RetryCallback<T, E> callback, Throwable throwable) {		
-		/*If it was not possible save a new register*/
 		if(context.getRetryCount()==ATTEMPTS) {
-			//System.out.println("Registro de placa "+ListaPlacaService.getCurrentRegistroModel().getVehiculoInvolucradoModel().getPlaca()+" no exitoso con:"+context.getRetryCount()+" intentos");
+			
 			if(ListaPlacaService.getCurrentRegistroModel()!=null) {
+				LOG.info("Save to JSON placa");
 				JSONManager.saveToJsonFile(ListaPlacaService.getCurrentRegistroModel());
 			}
-		}else { /* If it was saved a new register (maybe not in first attempt)*/
-			//System.out.println("Registro de placa "+ListaPlacaService.getCurrentRegistroModel().getVehiculoInvolucradoModel().getPlaca()+" exitoso con:"+context.getRetryCount()+" intentos");
-			
+		}else { 
+			LOG.info("Get JSON");
 			JSONArray ja= JSONManager.getArrayFromJsonFile();
 			boolean inserted;
 			URI baseUrl = URI.create(save);

@@ -3,6 +3,8 @@ package com.promad.msi.listaplacas.utilities;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -16,12 +18,13 @@ import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.promad.msi.listaplacas.errorhandling.PlacaRegisterRetryListener;
 import com.promad.msi.listaplacas.model.IncidenteModel;
 import com.promad.msi.listaplacas.model.RegistroModel;
 import com.promad.msi.listaplacas.model.VehiculoInvolucradoModel;
 
 public class JSONManager {
-
+	private final static Log LOG= LogFactory.getLog(PlacaRegisterRetryListener.class);
 	public static boolean updateJsonFile(String jsonString) {
 		String startDir = System.getProperty("user.dir");
 		File archivo = new File(startDir + "\\registros.json");
@@ -30,19 +33,16 @@ public class JSONManager {
 			try {
 				archivo.createNewFile();
 			} catch (IOException e) {
-				System.out.println("Error al crear el archivo: " + e.getMessage());
+				LOG.error("Error al crear el archivo: " + e.getMessage());
 			}
 		}
 
 		try (FileWriter file = new FileWriter(archivo)) {
-
 			file.write(jsonString);
 			file.flush();
-
 			return true;
-
 		} catch (IOException e) {
-			System.out.println("Error: " + e.getMessage());
+			LOG.error("Error: " + e.getMessage());
 		}
 		return false;
 
@@ -107,7 +107,7 @@ public class JSONManager {
 			try {
 				archivo.createNewFile();
 			} catch (IOException e) {
-				System.out.println("Error al crear el archivo: " + e.getMessage());
+				LOG.error("Error al crear el archivo: " + e.getMessage());
 			}
 		}
 		JSONParser jsonParser = new JSONParser();
@@ -120,13 +120,12 @@ public class JSONManager {
 			if (registrosList != null && registrosList.size() > 0)
 				return registrosList;
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			LOG.error(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error(e.getMessage());
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOG.error(e.getMessage());
 		}
-
 		return new JSONArray();
 	}
 

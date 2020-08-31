@@ -100,7 +100,7 @@ public class JSONManager {
 			registroList.add(registroObject);
 
 		} catch (Exception e) {
-			LOG.error("Error in SAVE"e.getMessage());
+			LOG.error("Error in SAVE" +e.getMessage());
 		}
 		return updateJsonFile(registroList.toJSONString());
 	}

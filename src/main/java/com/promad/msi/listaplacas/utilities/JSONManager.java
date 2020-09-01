@@ -27,24 +27,29 @@ public class JSONManager {
 	private final static Log LOG = LogFactory.getLog(PlacaRegisterRetryListener.class);
 
 	public static boolean updateJsonFile(String jsonString) {
-		String startDir = System.getProperty("user.dir");
-		File archivo = new File(startDir + "\\registros.json");
-		if (!archivo.exists()) {
-			try {
-				LOG.info("---NO EXISTE---");
-				archivo.createNewFile();
-			} catch (IOException e) {
-				LOG.error("Error al crear el archivo: " + e.getMessage());
+		try {
+			String startDir = System.getProperty("user.dir");
+			File archivo = new File(startDir + "\\registros.json");
+			if (!archivo.exists()) {
+				try {
+					LOG.info("---NO EXISTE---");
+					archivo.createNewFile();
+				} catch (IOException e) {
+					LOG.error("Error al crear el archivo: " + e.getMessage());
+				}
 			}
-		}
 
-		try  {
-			FileWriter file = new FileWriter(archivo);
-			file.write(jsonString);
-			file.flush();
-			return true;
-		} catch (IOException e) {
+			try {
+				FileWriter file = new FileWriter(archivo);
+				file.write(jsonString);
+				file.flush();
+				return true;
+			} catch (IOException e) {
+				LOG.error("Error: " + e.getMessage());
+			}
+		} catch (Exception e) {
 			LOG.error("Error: " + e.getMessage());
+			return false;
 		}
 		return false;
 
@@ -55,7 +60,7 @@ public class JSONManager {
 		LOG.info("---SAVE TO JSON FILE---");
 		JSONObject registro = new JSONObject();
 		JSONArray registroList = getArrayFromJsonFile();
-		try {	
+		try {
 
 			JSONObject incidenteObjectJSON = new JSONObject();
 
@@ -100,7 +105,7 @@ public class JSONManager {
 			registroList.add(registroObject);
 
 		} catch (Exception e) {
-			LOG.error("Error in SAVE" +e.getMessage());
+			LOG.error("Error in SAVE" + e.getMessage());
 		}
 		return updateJsonFile(registroList.toJSONString());
 	}

@@ -28,6 +28,7 @@ public class JSONManager {
 
 	public static boolean updateJsonFile(String jsonString) {
 		try {
+			LOG.info("---UPDATE---");
 			String startDir = System.getProperty("user.dir");
 			File archivo = new File(startDir + "\\registros.json");
 			if (!archivo.exists()) {
@@ -57,9 +58,10 @@ public class JSONManager {
 
 	@SuppressWarnings("unchecked")
 	public static boolean saveToJsonFile(RegistroModel rm) {
-		LOG.info("---SAVE TO JSON FILE---");
+		
 		JSONObject registro = new JSONObject();
 		JSONArray registroList = getArrayFromJsonFile();
+		LOG.info("---SAVE TO JSON FILE---");
 		try {
 
 			JSONObject incidenteObjectJSON = new JSONObject();

@@ -125,10 +125,10 @@ public class JSONManager {
 		}
 		JSONParser jsonParser = new JSONParser();
 		RegistroModel rm = new RegistroModel();
-		LOG.info("Archivo" +archivo.getPath());
+		
 		try  {
 			FileReader reader = new FileReader(archivo);
-			// Read JSON file
+			LOG.info("Archivo" +archivo.getPath()+ " - " + reader.read());			
 			Object obj = jsonParser.parse(reader);
 			JSONArray registrosList = (JSONArray) obj;
 			if (registrosList != null && registrosList.size() > 0)

@@ -112,6 +112,7 @@ public class JSONManager {
 		return updateJsonFile(registroList.toJSONString());
 	}
 
+	@SuppressWarnings("resource")
 	public static JSONArray getArrayFromJsonFile() {
 		String startDir = System.getProperty("user.dir");
 		File archivo = new File(startDir + "\\registros.json");
@@ -128,11 +129,15 @@ public class JSONManager {
 		
 		try  {
 			FileReader reader = new FileReader(archivo);
-			LOG.info("Archivo" +archivo.getPath()+ " - " + reader.read());			
+			if(reader.read()==-1){
+				return new JSONArray();
+			}
+			else {
 			Object obj = jsonParser.parse(reader);
 			JSONArray registrosList = (JSONArray) obj;
 			if (registrosList != null && registrosList.size() > 0)
 				return registrosList;
+			}
 		} catch (FileNotFoundException e) {
 			LOG.error("FileNotFoundException"+e.getMessage());
 		} catch (IOException e) {

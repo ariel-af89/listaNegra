@@ -125,19 +125,22 @@ public class JSONManager {
 		}
 		JSONParser jsonParser = new JSONParser();
 		RegistroModel rm = new RegistroModel();
-
-		try (FileReader reader = new FileReader(archivo)) {
+		LOG.info("Archivo" +archivo.getPath());
+		try  {
+			FileReader reader = new FileReader(archivo);
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
 			JSONArray registrosList = (JSONArray) obj;
 			if (registrosList != null && registrosList.size() > 0)
 				return registrosList;
 		} catch (FileNotFoundException e) {
-			LOG.error(e.getMessage());
+			LOG.error("FileNotFoundException"+e.getMessage());
 		} catch (IOException e) {
-			LOG.error(e.getMessage());
+			LOG.error("IOException"+e.getMessage());
 		} catch (ParseException e) {
-			LOG.error(e.getMessage());
+			LOG.error("ParseException"+e.getMessage());
+		}catch (Exception e) {
+			LOG.error("Error get" + e.getMessage());
 		}
 		return new JSONArray();
 	}

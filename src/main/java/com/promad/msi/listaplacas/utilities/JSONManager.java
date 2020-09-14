@@ -61,7 +61,6 @@ public class JSONManager {
 		
 		JSONObject registro = new JSONObject();
 		JSONArray registroList = getArrayFromJsonFile();
-		LOG.info("---SAVE TO JSON FILE---");
 		try {
 
 			JSONObject incidenteObjectJSON = new JSONObject();

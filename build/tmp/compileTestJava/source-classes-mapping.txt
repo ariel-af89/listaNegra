@@ -1,0 +1,2 @@
+com/promad/msi/listaplacas/ListaplacasApplicationTests.java
+ com.promad.msi.listaplacas.ListaplacasApplicationTests

@@ -1,0 +1,51 @@
+com/promad/msi/listaplacas/repository/VehiculoInvolucrado.java
+ com.promad.msi.listaplacas.repository.VehiculoInvolucrado
+com/promad/msi/listaplacas/repository/Incidente.java
+ com.promad.msi.listaplacas.repository.Incidente
+com/promad/msi/listaplacas/cliente/EventoPlaca.java
+ com.promad.msi.listaplacas.cliente.EventoPlaca
+com/promad/msi/listaplacas/errorhandling/PlacaRegisterRetryListener.java
+ com.promad.msi.listaplacas.errorhandling.PlacaRegisterRetryListener
+com/promad/msi/listaplacas/model/EventoPeticion.java
+ com.promad.msi.listaplacas.model.EventoPeticion
+com/promad/msi/listaplacas/helper/PlacasHelper.java
+ com.promad.msi.listaplacas.helper.PlacasHelper
+com/promad/msi/listaplacas/model/EventoModel.java
+ com.promad.msi.listaplacas.model.EventoModel
+com/promad/msi/listaplacas/model/IncidenteModel.java
+ com.promad.msi.listaplacas.model.IncidenteModel
+com/promad/msi/listaplacas/errorhandling/ErrorResolver.java
+ com.promad.msi.listaplacas.errorhandling.ErrorResolver
+com/promad/msi/listaplacas/errorhandling/BadRequestException.java
+ com.promad.msi.listaplacas.errorhandling.BadRequestException
+com/promad/msi/listaplacas/model/RegistroModel.java
+ com.promad.msi.listaplacas.model.RegistroModel
+com/promad/msi/listaplacas/model/RespuestaModel.java
+ com.promad.msi.listaplacas.model.RespuestaModel
+com/promad/msi/listaplacas/cliente/ClienteWebGenerico.java
+ com.promad.msi.listaplacas.cliente.ClienteWebGenerico
+ com.promad.msi.listaplacas.cliente.ClienteWebGenerico$1
+com/promad/msi/listaplacas/ListaplacasApplication.java
+ com.promad.msi.listaplacas.ListaplacasApplication
+com/promad/msi/listaplacas/model/RespuestaWService.java
+ com.promad.msi.listaplacas.model.RespuestaWService
+com/promad/msi/listaplacas/service/EventoService.java
+ com.promad.msi.listaplacas.service.EventoService
+com/promad/msi/listaplacas/repository/EventoRepository.java
+ com.promad.msi.listaplacas.repository.EventoRepository
+com/promad/msi/listaplacas/utilities/JSONManager.java
+ com.promad.msi.listaplacas.utilities.JSONManager
+com/promad/msi/listaplacas/errorhandling/InvalidRequestException.java
+ com.promad.msi.listaplacas.errorhandling.InvalidRequestException
+com/promad/msi/listaplacas/model/VehiculoInvolucradoModel.java
+ com.promad.msi.listaplacas.model.VehiculoInvolucradoModel
+com/promad/msi/listaplacas/cliente/ListaPlacas.java
+ com.promad.msi.listaplacas.cliente.ListaPlacas
+com/promad/msi/listaplacas/service/ListaPlacaService.java
+ com.promad.msi.listaplacas.service.ListaPlacaService
+com/promad/msi/listaplacas/controller/ListaPlacasController.java
+ com.promad.msi.listaplacas.controller.ListaPlacasController
+com/promad/msi/listaplacas/errorhandling/ErrorDescriptor.java
+ com.promad.msi.listaplacas.errorhandling.ErrorDescriptor
+com/promad/msi/listaplacas/errorhandling/DataNotFoundException.java
+ com.promad.msi.listaplacas.errorhandling.DataNotFoundException

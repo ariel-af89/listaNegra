@@ -41,7 +41,8 @@ public class JSONManager {
 			}
 
 			try {
-				FileWriter file = new FileWriter(archivo);
+				LOG.info("---ENTRA WRITE---" + jsonString);
+				FileWriter file = new FileWriter(archivo,true);
 				file.write(jsonString);
 				file.flush();
 				return true;

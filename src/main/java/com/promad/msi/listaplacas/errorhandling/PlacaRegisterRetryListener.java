@@ -56,7 +56,8 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 			JSONArray ja= JSONManager.getArrayFromJsonFile();
 			boolean inserted;
 			URI baseUrl = URI.create(save);
-			for(int i=0; i< ja.size() ; i++) {					
+			for(int i=0; i< ja.size() ; i++) {
+				LOG.info("Get JSON y tiene informacion entra a ciclo");
 				inserted=false;
 				try	{
 					RegistroModel rm = JSONManager.parseregistroObject((JSONObject) ja.get(i));
@@ -66,6 +67,7 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 					inserted = true;
 				} catch(Exception ex) {
 					inserted = false;
+					LOG.info("Entra a JSON inserted false");
 				} finally {
 					if(inserted) {
 						ja.remove(i);

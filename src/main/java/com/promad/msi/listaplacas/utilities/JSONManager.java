@@ -41,7 +41,7 @@ public class JSONManager {
 			}
 
 			try {
-				System.out.println("---ENTRA WRITE---"+ jsonString);
+				//System.out.println("---ENTRA WRITE---"+ jsonString);
 				FileWriter file = new FileWriter(archivo,true);
 				file.write(jsonString);
 				file.flush();

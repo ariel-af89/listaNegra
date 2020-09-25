@@ -143,7 +143,7 @@ public class JSONManager {
 		try  {
 			FileReader reader = new FileReader(archivo);
 			if(reader.read()==-1){
-				return null;
+				return new ArrayList<>();
 				// return new JSONArray();
 			}
 			else {

@@ -1,7 +1,12 @@
 package com.promad.msi.listaplacas.errorhandling;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
+import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONArray;
@@ -53,29 +58,47 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 			}
 		}else { 
 			LOG.info("Get JSON");
-			JSONArray ja= JSONManager.getArrayFromJsonFile();
+			//JSONArray ja= JSONManager.getArrayFromJsonFile();
+			List<String> ja= JSONManager.getArrayFromJsonFile();
 			boolean inserted;
 			URI baseUrl = URI.create(save);
 			for(int i=0; i< ja.size() ; i++) {
 				LOG.info("Get JSON y tiene informacion entra a ciclo");
 				inserted=false;
 				try	{
-					RegistroModel rm = JSONManager.parseregistroObject((JSONObject) ja.get(i));
-					listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(rm));
-					
+					String json = ja.get(i);
+					Gson gson = new Gson();
+					RegistroModel rm = gson.fromJson(json, RegistroModel.class);
+					RegistroModel mov = rm;
 					LOG.info("*********Se envia el registro pendiente de la placa "+rm.getVehiculoInvolucradoModel().getPlaca()+" *********");
+
+					//RegistroModel rm = JSONManager.parseregistroObject((JSONObject) ja.get(i));
+					listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(rm));
+
 					inserted = true;
 				} catch(Exception ex) {
 					inserted = false;
-					LOG.info("Entra a JSON inserted false");
 				} finally {
 					if(inserted) {
 						ja.remove(i);
 						i--;
 					} 
 				}
+
 			}
-			JSONManager.updateJsonFile(ja.toJSONString());
+
+try{
+			String startDir = System.getProperty("user.dir");
+			File archivo = new File(startDir + "\\registros.json");
+			FileWriter file = new FileWriter(archivo);
+			file.write(" ");
+			file.flush();
+			file.close();
+		} catch (IOException e) {
+			LOG.error("Error: " + e.getMessage());
+		}
+
+			//JSONManager.updateJsonFile(ja.toJSONString());
 		}
 	    super.close(context, callback, throwable);
 	}

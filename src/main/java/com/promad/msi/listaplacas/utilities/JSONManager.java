@@ -126,6 +126,7 @@ public class JSONManager {
 
 	@SuppressWarnings("resource")
 	public static List<String> getArrayFromJsonFile() {
+		List<String> man = new ArrayList<>();
 		String startDir = System.getProperty("user.dir");
 		File archivo = new File(startDir + "\\registros.json");
 
@@ -226,7 +227,7 @@ public class JSONManager {
 			LOG.error("Error get" + e.getMessage());
 		}
 		//return new LisJSONArray();
-		return null;
+		return new ArrayList<>();
 	}
 
 	public static RegistroModel parseregistroObject(JSONObject indexObject) {

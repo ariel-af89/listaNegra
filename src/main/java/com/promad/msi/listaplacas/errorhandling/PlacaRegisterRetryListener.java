@@ -62,31 +62,31 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 			List<String> ja = JSONManager.getArrayFromJsonFile();
 			boolean inserted;
 			URI baseUrl = URI.create(save);
-			if (ja.size() > 0) {
-				for (int i = 0; i < ja.size(); i++) {
-					//LOG.info("Get JSON y tiene informacion entra a ciclo");
+
+			for (int i = 0; i < ja.size(); i++) {
+				//LOG.info("Get JSON y tiene informacion entra a ciclo");
+				inserted = false;
+				try {
+					String json = ja.get(i);
+					Gson gson = new Gson();
+					RegistroModel rm = gson.fromJson(json, RegistroModel.class);
+					RegistroModel mov = rm;
+					LOG.info("*********Se envia el registro pendiente de la placa " + rm.getVehiculoInvolucradoModel().getPlaca() + " *********");
+
+					//RegistroModel rm = JSONManager.parseregistroObject((JSONObject) ja.get(i));
+					listaPlacas.savePlaca(baseUrl, token, PlacasHelper.domainToRepository(rm));
+
+					inserted = true;
+				} catch (Exception ex) {
 					inserted = false;
-					try {
-						String json = ja.get(i);
-						Gson gson = new Gson();
-						RegistroModel rm = gson.fromJson(json, RegistroModel.class);
-						RegistroModel mov = rm;
-						LOG.info("*********Se envia el registro pendiente de la placa " + rm.getVehiculoInvolucradoModel().getPlaca() + " *********");
-
-						//RegistroModel rm = JSONManager.parseregistroObject((JSONObject) ja.get(i));
-						listaPlacas.savePlaca(baseUrl, token, PlacasHelper.domainToRepository(rm));
-
-						inserted = true;
-					} catch (Exception ex) {
-						inserted = false;
-					} finally {
-						if (inserted) {
-							ja.remove(i);
-							i--;
-						}
+				} finally {
+					if (inserted) {
+						ja.remove(i);
+						i--;
 					}
-
 				}
+
+
 				try {
 					String startDir = System.getProperty("user.dir");
 					File archivo = new File(startDir + "\\registros.json");
@@ -98,11 +98,10 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 					LOG.error("Error: " + e.getMessage());
 				}
 			}
-
 			/*Gson gson = new Gson();
 			registroList = gson.toJson(rm);
-			JSONManager.updateJsonFile(ja);*/
-
+			JSONManager.updateJsonFile(ja);
+*/
 		}
 
 		super.close(context, callback, throwable);

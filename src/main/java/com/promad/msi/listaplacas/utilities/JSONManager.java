@@ -38,7 +38,6 @@ public class JSONManager {
 			File archivo = new File(startDir + "\\registros.json");
 			if (!archivo.exists()) {
 				try {
-					LOG.info("---NO EXISTE---");
 					archivo.createNewFile();
 				} catch (IOException e) {
 					LOG.error("Error al crear el archivo: " + e.getMessage());

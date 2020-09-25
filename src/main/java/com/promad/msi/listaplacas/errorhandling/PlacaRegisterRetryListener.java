@@ -46,62 +46,61 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 	}
 	
 	@Override
-	public <T, E extends Throwable> void close(RetryContext context, RetryCallback<T, E> callback, Throwable throwable) {		
-		if(context.getRetryCount()==ATTEMPTS) {
-			
-			if(ListaPlacaService.getCurrentRegistroModel()!=null) {
-				try {								
-				JSONManager.saveToJsonFile(ListaPlacaService.getCurrentRegistroModel());
+	public <T, E extends Throwable> void close(RetryContext context, RetryCallback<T, E> callback, Throwable throwable) {
+		if (context.getRetryCount() == ATTEMPTS) {
+
+			if (ListaPlacaService.getCurrentRegistroModel() != null) {
+				try {
+					JSONManager.saveToJsonFile(ListaPlacaService.getCurrentRegistroModel());
 				} catch (Exception e) {
-					LOG.error(e.getMessage()+ " Se envio: " + ListaPlacaService.getCurrentRegistroModel());
+					LOG.error(e.getMessage() + " Se envio: " + ListaPlacaService.getCurrentRegistroModel());
 				}
 			}
-		}else { 
+		} else {
 			LOG.info("Get JSON");
 			//JSONArray ja= JSONManager.getArrayFromJsonFile();
-			List<String> ja= JSONManager.getArrayFromJsonFile();
+			List<String> ja = JSONManager.getArrayFromJsonFile();
 			boolean inserted;
 			URI baseUrl = URI.create(save);
-			for(int i=0; i< ja.size() ; i++) {
-				LOG.info("Get JSON y tiene informacion entra a ciclo");
-				inserted=false;
-				try	{
+			for (int i = 0; i < ja.size(); i++) {
+				//LOG.info("Get JSON y tiene informacion entra a ciclo");
+				inserted = false;
+				try {
 					String json = ja.get(i);
 					Gson gson = new Gson();
 					RegistroModel rm = gson.fromJson(json, RegistroModel.class);
 					RegistroModel mov = rm;
-					LOG.info("*********Se envia el registro pendiente de la placa "+rm.getVehiculoInvolucradoModel().getPlaca()+" *********");
+					LOG.info("*********Se envia el registro pendiente de la placa " + rm.getVehiculoInvolucradoModel().getPlaca() + " *********");
 
 					//RegistroModel rm = JSONManager.parseregistroObject((JSONObject) ja.get(i));
-					listaPlacas.savePlaca(baseUrl,token,PlacasHelper.domainToRepository(rm));
+					listaPlacas.savePlaca(baseUrl, token, PlacasHelper.domainToRepository(rm));
 
 					inserted = true;
-				} catch(Exception ex) {
+				} catch (Exception ex) {
 					inserted = false;
 				} finally {
-					if(inserted) {
+					if (inserted) {
 						ja.remove(i);
 						i--;
-					} 
+					}
 				}
 
+
+				try {
+					String startDir = System.getProperty("user.dir");
+					File archivo = new File(startDir + "\\registros.json");
+					FileWriter file = new FileWriter(archivo);
+					file.write(" ");
+					file.flush();
+					file.close();
+				} catch (IOException e) {
+					LOG.error("Error: " + e.getMessage());
+				}
+
+				//JSONManager.updateJsonFile(ja.toJSONString());
 			}
-
-try{
-			String startDir = System.getProperty("user.dir");
-			File archivo = new File(startDir + "\\registros.json");
-			FileWriter file = new FileWriter(archivo);
-			file.write(" ");
-			file.flush();
-			file.close();
-		} catch (IOException e) {
-			LOG.error("Error: " + e.getMessage());
+			super.close(context, callback, throwable);
 		}
-
-			//JSONManager.updateJsonFile(ja.toJSONString());
-		}
-	    super.close(context, callback, throwable);
 	}
-	
 	
 }

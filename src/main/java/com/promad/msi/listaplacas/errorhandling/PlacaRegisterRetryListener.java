@@ -96,11 +96,12 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 				} catch (IOException e) {
 					LOG.error("Error: " + e.getMessage());
 				}
-
-				//JSONManager.updateJsonFile(ja.toJSONString());
 			}
-			super.close(context, callback, throwable);
+			//JSONManager.updateJsonFile(ja);
+
 		}
+
+		super.close(context, callback, throwable);
 	}
 	
 }

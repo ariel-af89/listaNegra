@@ -62,9 +62,9 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 			List<String> ja = JSONManager.getArrayFromJsonFile();
 			boolean inserted;
 			URI baseUrl = URI.create(save);
-
+			if (ja.size()>0){
+				//&&} ja.equals("")){
 			for (int i = 0; i < ja.size(); i++) {
-				//LOG.info("Get JSON y tiene informacion entra a ciclo");
 				inserted = false;
 				try {
 					String json = ja.get(i);
@@ -87,11 +87,12 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 				}
 
 
+
+			}
 				try {
-					String startDir = System.getProperty("user.dir");
-					File archivo = new File(startDir + "\\registros.json");
+					File archivo = JSONManager.getJsonFile();
 					FileWriter file = new FileWriter(archivo);
-					file.write(" ");
+					file.write("");
 					file.flush();
 					file.close();
 				} catch (IOException e) {

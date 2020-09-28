@@ -31,12 +31,19 @@ import com.promad.msi.listaplacas.model.VehiculoInvolucradoModel;
 public class JSONManager {
 	private final static Log LOG = LogFactory.getLog(PlacaRegisterRetryListener.class);
 
+	public static File getJsonFile() {
+		String startDir = System.getProperty("user.dir");
+		File archivo = new File(startDir + "\\registros.json");
+		return archivo;
+	}
+
+
 	public static boolean updateJsonFile(String jsonString) {
 		try {
 			LOG.info("---UPDATE---");
-			String startDir = System.getProperty("user.dir");
-			File archivo = new File(startDir + "\\registros.json");
-			if (!archivo.exists()) {
+			File archivo = getJsonFile();
+
+			if (!archivo.isFile()) {
 				try {
 					archivo.createNewFile();
 				} catch (IOException e) {
@@ -125,20 +132,13 @@ public class JSONManager {
 
 	@SuppressWarnings("resource")
 	public static List<String> getArrayFromJsonFile() {
-		List<String> man = new ArrayList<>();
-		String startDir = System.getProperty("user.dir");
-		File archivo = new File(startDir + "\\registros.json");
 
-		if (!archivo.exists()) {
-			try {
-				archivo.createNewFile();
-			} catch (IOException e) {
-				LOG.error("Error al crear el archivo: " + e.getMessage());
-			}
-		}
+		File archivo = getJsonFile();
+
+
 		//JSONParser jsonParser = new JSONParser();
 		//RegistroModel rm = new RegistroModel();
-		
+
 		try  {
 			FileReader reader = new FileReader(archivo);
 			if(reader.read()==-1){
@@ -147,8 +147,10 @@ public class JSONManager {
 			}
 			else {
 
+				String startDir = System.getProperty("user.dir");
 				String jsonN = new String(Files.readAllBytes(Paths.get(startDir + "\\registros.json")));
-				List<String> registrosList = new ArrayList<String>(Arrays.asList(jsonN.split(";")));
+
+				List<String> registrosList = new ArrayList<>(Arrays.asList(jsonN.split(";")));
 				System.out.println(registrosList);
 
 /*

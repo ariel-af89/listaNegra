@@ -63,7 +63,6 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 			boolean inserted;
 			URI baseUrl = URI.create(save);
 			if (ja.size()>0){
-				//&&} ja.equals("")){
 			for (int i = 0; i < ja.size(); i++) {
 				inserted = false;
 				try {

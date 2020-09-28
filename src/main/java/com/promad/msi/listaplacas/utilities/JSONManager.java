@@ -34,6 +34,7 @@ public class JSONManager {
 	public static File getJsonFile() {
 		String startDir = System.getProperty("user.dir");
 		File archivo = new File(startDir + "\\registros.json");
+		LOG.info("obtiene archivo " + archivo);
 		return archivo;
 	}
 
@@ -135,6 +136,13 @@ public class JSONManager {
 
 		File archivo = getJsonFile();
 
+		if (!archivo.isFile()) {
+			try {
+				archivo.createNewFile();
+			} catch (IOException e) {
+				LOG.error("Error al crear el archivo: " + e.getMessage());
+			}
+		}
 
 		//JSONParser jsonParser = new JSONParser();
 		//RegistroModel rm = new RegistroModel();
@@ -142,10 +150,12 @@ public class JSONManager {
 		try  {
 			FileReader reader = new FileReader(archivo);
 			if(reader.read()==-1){
+				LOG.info("ENTRA read == -1");
 				return new ArrayList<>();
 				// return new JSONArray();
 			}
 			else {
+				LOG.info("ENTRA convierte registro");
 
 				String startDir = System.getProperty("user.dir");
 				String jsonN = new String(Files.readAllBytes(Paths.get(startDir + "\\registros.json")));

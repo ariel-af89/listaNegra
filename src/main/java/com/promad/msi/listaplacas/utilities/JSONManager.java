@@ -33,6 +33,7 @@ public class JSONManager {
 
 	public static File getJsonFile() {
 		String startDir = System.getProperty("user.dir");
+		LOG.info("PATH -->" + startDir);
 		File archivo = new File(startDir + "\\registros.json");
 		LOG.info("obtiene archivo " + archivo);
 		return archivo;

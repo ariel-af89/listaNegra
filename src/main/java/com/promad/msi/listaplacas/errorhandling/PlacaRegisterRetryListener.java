@@ -1,11 +1,6 @@
 package com.promad.msi.listaplacas.errorhandling;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URI;
-import java.util.List;
-
 import com.google.gson.Gson;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -51,57 +46,42 @@ public class PlacaRegisterRetryListener  extends RetryListenerSupport {
 
 			if (ListaPlacaService.getCurrentRegistroModel() != null) {
 				try {
-					JSONManager.saveToJsonFile(ListaPlacaService.getCurrentRegistroModel());
+					JSONManager.saveToJsonArray(ListaPlacaService.getCurrentRegistroModel());
 				} catch (Exception e) {
 					LOG.error(e.getMessage() + " Se envio: " + ListaPlacaService.getCurrentRegistroModel());
 				}
 			}
 		} else {
 			LOG.info("Get JSON");
-			//JSONArray ja= JSONManager.getArrayFromJsonFile();
-			List<String> ja = JSONManager.getArrayFromJsonFile();
+			JSONArray registrosList= JSONManager.getArrayJSON();
+			System.out.println("IMPRIME REGISTROS -->" + registrosList);
 			boolean inserted;
 			URI baseUrl = URI.create(save);
-			if (ja.size()>0){
-			for (int i = 0; i < ja.size(); i++) {
+			if (registrosList.size()>0){
 				inserted = false;
 				try {
-					String json = ja.get(i);
+				registrosList.forEach(reg -> {
+					String json = reg.toString();
 					Gson gson = new Gson();
 					RegistroModel rm = gson.fromJson(json, RegistroModel.class);
 					RegistroModel mov = rm;
-					LOG.info("*********Se envia el registro pendiente de la placa " + rm.getVehiculoInvolucradoModel().getPlaca() + " *********");
+					System.out.println(reg);
 
-					//RegistroModel rm = JSONManager.parseregistroObject((JSONObject) ja.get(i));
+					LOG.info("*********Se envia el registro pendiente de la placa " + rm.getVehiculoInvolucradoModel().getPlaca() + " *********");
 					listaPlacas.savePlaca(baseUrl, token, PlacasHelper.domainToRepository(rm));
 
+				});
 					inserted = true;
 				} catch (Exception ex) {
 					inserted = false;
-				} finally {
+				} /*finally {
 					if (inserted) {
-						ja.remove(i);
-						i--;
+						registrosList.remove();
 					}
-				}
-
-
+				}*/
 
 			}
-				try {
-					File archivo = JSONManager.getJsonFile();
-					FileWriter file = new FileWriter(archivo);
-					file.write("");
-					file.flush();
-					file.close();
-				} catch (IOException e) {
-					LOG.error("Error: " + e.getMessage());
-				}
-			}
-			/*Gson gson = new Gson();
-			registroList = gson.toJson(rm);
-			JSONManager.updateJsonFile(ja);
-*/
+
 		}
 
 		super.close(context, callback, throwable);
